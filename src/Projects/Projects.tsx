@@ -23,6 +23,7 @@ export default class Projects extends Component<{}, { projects: any, DataIsLoade
             DataIsLoaded: true
           }
         );
+        console.log(this.state);
       }
     );
   }
@@ -41,10 +42,16 @@ export default class Projects extends Component<{}, { projects: any, DataIsLoade
     }
     else {
       return (
-        <div>
-          <h1>
-            Projects works!
-          </h1>
+        <div className="row">
+          {this.state.projects.map((e: any, i: number) => {
+            return(
+              <div className="col-3" key={i}>
+                <div className="card">
+                  <p>{e.toString()}</p>
+                </div>
+              </div>
+            );
+          })}
         </div>
       );
     }
