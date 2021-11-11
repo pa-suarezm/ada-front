@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import Loading from '../Loading/Loading';
+import ProjectCard from './ProjectCard/ProjectCard';
 import './Projects.css';
 
 export default class Projects extends Component<{}, { projects: any, DataIsLoaded: boolean }> {
@@ -31,13 +33,7 @@ export default class Projects extends Component<{}, { projects: any, DataIsLoade
   render() {
     if (!this.state.DataIsLoaded) {
       return (
-        <div className="row">
-          <div className="col-12 text-center">
-            <h1>
-              Cargando proyectos...
-            </h1>
-          </div>
-        </div>
+        <Loading />
       );
     }
     else {
@@ -45,11 +41,15 @@ export default class Projects extends Component<{}, { projects: any, DataIsLoade
         <div className="row">
           {this.state.projects.map((e: any, i: number) => {
             return(
-              <div className="col-3" key={i}>
-                <div className="card">
-                  <p>{e.toString()}</p>
-                </div>
-              </div>
+              <ProjectCard
+                _id = {e._id}
+                status = {e.status}
+                user = {e.user}
+                type = {e.type}
+                name = {e.name}
+                date_delivery = {e.date_delivery}
+                description = {e.description}
+              />
             );
           })}
         </div>
