@@ -5,6 +5,7 @@ import Auth from './Auth/Auth';
 import { Route, Routes } from 'react-router-dom';
 import Home from './Home/Home';
 import ProjectDetail from './Projects/ProjectDetail/ProjectDetail';
+import AddProject from './Projects/AddProject/AddProject';
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path="/projects" element={<Projects />} />
         <Route path="/projects/:_id" element={<ProjectDetail />} />
         <Route path="/auth" element={<Auth />} />
+        <Route path="/project/create" element={<AddProject />} />
       </Routes>
     </div>
   );
