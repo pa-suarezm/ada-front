@@ -13,17 +13,16 @@ export default class Projects extends Component<{}, { projects: any, DataIsLoade
   }
 
   componentDidMount() {
-    fetch("https://fervent-hopper-82cf2a.netlify.app/api/project/getAll", {
-      headers: {
-        "Access-Control-Allow-Origin": "*"
-      }
-    }).then(
-      (res: any) => {
-        console.log(res);
-      }
-    ).catch(
-      err => {
-        console.log(err);
+    fetch("https://fervent-hopper-82cf2a.netlify.app/api/project/getAll").then(
+      (res: any) => res.json()
+    ).then(
+      (json: any) => {
+        this.setState(
+          {
+            projects: json,
+            DataIsLoaded: true
+          }
+        );
       }
     );
   }
